@@ -82,4 +82,8 @@ public class Integer implements Scalar{
         number *= -1;
         return this;
     }
+
+    public String toString(){
+        return String.valueOf(number);
+    }
 }
