@@ -65,7 +65,7 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar addInteger(Integer s) {
-        return new Rational(java.lang.Integer.parseInt(s.toString()) * denominator + numerator, denominator);
+        return new Rational((java.lang.Integer.parseInt(s.toString()) * denominator) + numerator, denominator);
     }
 
     @Override
@@ -80,18 +80,20 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        int sign = 1; //will tell us the sign of the exponent
+        boolean flip = false; //will tell us if we will need to flip the numerator and denominator
         if (exponent < 0) {
-            sign = -1;
+            flip = true;
             exponent *= -1; //switching to the absolute value of the exponent
         }
         int numeratorExp = 1;
         int denominatorExp = 1;
         while (exponent != 0){
             numeratorExp *= numerator;
-            denominatorExp *= denominatorExp;
+            denominatorExp *= denominator;
             exponent--;
         }
+        if (flip)
+            return new Rational(denominatorExp, numeratorExp);
         return new Rational(numeratorExp, denominatorExp);
     }
 
