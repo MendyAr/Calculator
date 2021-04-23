@@ -6,6 +6,10 @@ public class Integer implements Scalar{
         this.number = number;
     }
 
+    public Integer(Integer I){
+        this.number = I.number;
+    }
+
     public Scalar add(Scalar s){
         if( s.toString().indexOf('/') == -1 ) {
             Integer Int = new Integer(java.lang.Integer.valueOf(s.toString()));
@@ -32,41 +36,34 @@ public class Integer implements Scalar{
     }
 
     public Scalar addInteger(Integer s) {
-        Scalar sum = new Integer(number + s.number);
-        return sum;
+        return new Integer(number + s.number);
     }
 
     public Scalar addRational(Rational s){
-        return s.add(this);
+        return s.addInteger(this);
     }
 
     public Scalar mulInteger(Integer s){
-        Scalar sum = new Integer(number * s.number);
-        return sum;
+        return new Integer(number * s.number);
     }
 
     public Scalar mulRational(Rational s){
-        return s.mul(this);
+        return s.mulRational(this);
     }
 
     public Scalar power(int exponent) {
-        Scalar output;
         if (exponent == 0)
-            output = new Integer(1);
+            return new Integer(1);
 
-        else if( exponent > 0 ){
-            int newNum = 1;
-            for( int i=0; i < exponent; i++ )
-                newNum *= number;
-            output = new Integer(newNum);
+        int sign = 1;
+        if( exponent < 0 )
+            sign = -1;
+        int newNum = 1;
+        while( exponent != 0 ) {
+            newNum *= number;
+            exponent -= sign;
         }
-        else{
-            int newNum = 1;
-            for( int i=0; i < exponent*(-1); i++ )
-                newNum *= number;
-            output = new Rational(1, newNum);
-        }
-        return output;
+        return new Rational(1, newNum);
     }
 
     public int sign(){
