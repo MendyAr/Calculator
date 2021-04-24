@@ -48,7 +48,7 @@ public class Integer implements Scalar{
     }
 
     public Scalar mulRational(Rational s){
-        return s.mulRational(this);
+        return s.mulInteger(this);
     }
 
     public Scalar power(int exponent) {
