@@ -1,11 +1,14 @@
 package Polymath;
 
 public class Rational implements Scalar {
+
     //fields
+
     private int numerator;
     private int denominator;
 
     //constructors
+
     public Rational(int numerator, int denominator) {
         if (denominator == 0)
             throw new IllegalArgumentException("Denominator can't be 0");
@@ -27,6 +30,8 @@ public class Rational implements Scalar {
     }
 
     //methods
+
+    @Override
     public String toString() {
         String string = String.valueOf(numerator);
         if (denominator != 1)
@@ -113,6 +118,8 @@ public class Rational implements Scalar {
     public Scalar neg() {
         return new Rational(-numerator, denominator);
     }
+
+    //static functions
 
     //returns the greatest common divisor of integers a and b
     private static int gcd(int a, int b) {
