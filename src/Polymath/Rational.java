@@ -1,3 +1,5 @@
+package Polymath;
+
 public class Rational implements Scalar {
     //fields
     private int numerator;

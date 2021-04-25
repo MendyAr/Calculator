@@ -1,4 +1,4 @@
-//package PolyMath;
+package Polymath;
 
 public interface Scalar {
 

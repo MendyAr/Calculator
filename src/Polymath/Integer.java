@@ -1,3 +1,5 @@
+package Polymath;
+
 public class Integer implements Scalar{
 
     private int number;
@@ -12,24 +14,24 @@ public class Integer implements Scalar{
 
     public Scalar add(Scalar s){
         if( s.toString().indexOf('/') == -1 ) {
-            Integer Int = new Integer(java.lang.Integer.valueOf(s.toString()));
+            Integer Int = new Integer(java.lang.Integer.parseInt(s.toString()));
             return addInteger(Int);
         }
         else {
             String[] RationalNum = s.toString().split("/");
-            Rational r = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
+            Rational r = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
             return addRational(r);
         }
     }
 
     public Scalar mul(Scalar s){
         if( s.toString().indexOf('/') == -1 ) {
-            Integer Int = new Integer(java.lang.Integer.valueOf(s.toString()));
+            Integer Int = new Integer(java.lang.Integer.parseInt(s.toString()));
             return mulInteger(Int);
         }
         else {
             String[] RationalNum = s.toString().split("/");
-            Rational r = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
+            Rational r = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
             return mulRational(r);
         }
 
@@ -48,7 +50,7 @@ public class Integer implements Scalar{
     }
 
     public Scalar mulRational(Rational s){
-        return s.mulRational(this);
+        return s.mulInteger(this);
     }
 
     public Scalar power(int exponent) {
@@ -76,8 +78,7 @@ public class Integer implements Scalar{
     }
 
     public Scalar neg() {
-        number *= -1;
-        return this;
+        return new Integer(-number);
     }
 
     public String toString(){

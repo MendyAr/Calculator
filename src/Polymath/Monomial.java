@@ -1,3 +1,5 @@
+package Polymath;
+
 public class Monomial {
 
     private int exponent;
@@ -8,20 +10,20 @@ public class Monomial {
         if( exponent < 0 )
         this.exponent =  exponent;
         if( coefficient.toString().indexOf('/') == -1 )
-            this.coefficient = new Integer(java.lang.Integer.valueOf(coefficient.toString()));
+            this.coefficient = new Integer(java.lang.Integer.parseInt(coefficient.toString()));
         else {
             String[] RationalNum = coefficient.toString().split("/");
-            this.coefficient = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
+            this.coefficient = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
         }
     }
 
     public Monomial( Monomial m ){
         this.exponent =  exponent;
         if( m.coefficient.toString().indexOf('/') == -1 )
-            this.coefficient = new Integer(java.lang.Integer.valueOf(m.coefficient.toString()));
+            this.coefficient = new Integer(java.lang.Integer.parseInt(m.coefficient.toString()));
         else {
             String[] RationalNum = m.coefficient.toString().split("/");
-            this.coefficient = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
+            this.coefficient = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
         }
     }
 
