@@ -96,7 +96,7 @@ public class Polynomial {
         String str = "";
         for (int i = 0; i < monomials.length; i++) {
             String monomial = monomials[i].toString();
-            if (monomial.charAt(0) != '0')
+            if (!monomial.equals("0"))
                 str += monomial + " ";
         }
         if (str.length() == 0)
