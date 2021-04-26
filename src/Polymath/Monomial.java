@@ -1,3 +1,5 @@
+package Polymath;
+
 public class Monomial {
 
     //fields

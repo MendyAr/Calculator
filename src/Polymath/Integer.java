@@ -1,38 +1,35 @@
 public class Integer implements Scalar{
 
-    // field
     private int number;
 
-    // constructor
     public Integer(int number){
         this.number = number;
     }
-    // copy constructor
+
     public Integer(Integer I){
         this.number = I.number;
     }
 
-    // methods
     public Scalar add(Scalar s){
         if( s.toString().indexOf('/') == -1 ) {
-            Integer Int = new Integer(java.lang.Integer.parseInt(s.toString()));
+            Integer Int = new Integer(java.lang.Integer.valueOf(s.toString()));
             return addInteger(Int);
         }
         else {
             String[] RationalNum = s.toString().split("/");
-            Rational r = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
+            Rational r = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
             return addRational(r);
         }
     }
 
     public Scalar mul(Scalar s){
         if( s.toString().indexOf('/') == -1 ) {
-            Integer Int = new Integer(java.lang.Integer.parseInt(s.toString()));
+            Integer Int = new Integer(java.lang.Integer.valueOf(s.toString()));
             return mulInteger(Int);
         }
         else {
             String[] RationalNum = s.toString().split("/");
-            Rational r = new Rational(java.lang.Integer.parseInt(RationalNum[0]), java.lang.Integer.parseInt(RationalNum[1]));
+            Rational r = new Rational(java.lang.Integer.valueOf(RationalNum[0]), java.lang.Integer.valueOf(RationalNum[1]));
             return mulRational(r);
         }
 
@@ -51,7 +48,7 @@ public class Integer implements Scalar{
     }
 
     public Scalar mulRational(Rational s){
-        return s.mulInteger(this);
+        return s.mulRational(this);
     }
 
     public Scalar power(int exponent) {
@@ -79,7 +76,8 @@ public class Integer implements Scalar{
     }
 
     public Scalar neg() {
-        return new Integer(-1*number );
+        number *= -1;
+        return this;
     }
 
     public String toString(){

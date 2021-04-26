@@ -1,9 +1,25 @@
+package Polymath;
+
 public class Rational implements Scalar {
+
     //fields
+
     private int numerator;
     private int denominator;
 
+    //getters
+
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
+
+
     //constructors
+
     public Rational(int numerator, int denominator) {
         if (denominator == 0)
             throw new IllegalArgumentException("Denominator can't be 0");
@@ -25,9 +41,11 @@ public class Rational implements Scalar {
     }
 
     //methods
+
+    @Override
     public String toString() {
         String string = String.valueOf(numerator);
-        if (denominator != 1)
+        if (denominator != 1) //will omit the denominator if it is 1
             string += "/" + denominator;
         return string;
     }
@@ -39,22 +57,14 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        int index = s.toString().indexOf('/'); //indicator if the scalar is an Integer or Rational ('/' would appear in a rational scalar only)
-        if (index == -1) //the scalar is an Integer
-            return addInteger(new Integer(java.lang.Integer.parseInt(s.toString()))); //calling the addition with an Integer
-        //else calling the addition with a Rational
-        return addRational(new Rational(java.lang.Integer.parseInt(s.toString().substring(0, index)), //parsing with the toString form of S using the index of the slash to find the numerator and denominator
-                java.lang.Integer.parseInt(s.toString().substring(index + 1))));
+        //since we don't know the type of s but we know the type of this we will call s.addRational
+        return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        int index = s.toString().indexOf('/'); //indicator if the scalar is an Integer or Rational ('/' would appear in a rational scalar only)
-        if (index == -1) //the scalar is an Integer
-            return mulInteger(new Integer(java.lang.Integer.parseInt(s.toString()))); //calling the addition with an Integer
-        //else calling the addition with a Rational
-        return mulRational(new Rational(java.lang.Integer.parseInt(s.toString().substring(0, index)), //parsing with the toString form of S using the index of the slash to find the numerator and denominator
-                java.lang.Integer.parseInt(s.toString().substring(index + 1))));
+        //since we don't know the type of s but we know the type of this we will call s.mulRational
+        return s.mulRational(this);
     }
 
     @Override
@@ -65,7 +75,7 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar addInteger(Integer s) {
-        return new Rational((java.lang.Integer.parseInt(s.toString()) * denominator) + numerator, denominator);
+        return new Rational((s.getNumber() * denominator) + numerator, denominator);
     }
 
     @Override
@@ -75,7 +85,7 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar mulInteger(Integer s) {
-        return new Rational(java.lang.Integer.parseInt(s.toString()) * numerator, denominator);
+        return new Rational(s.getNumber() * numerator, denominator);
     }
 
     @Override
@@ -111,6 +121,8 @@ public class Rational implements Scalar {
     public Scalar neg() {
         return new Rational(-numerator, denominator);
     }
+
+    //static functions
 
     //returns the greatest common divisor of integers a and b
     private static int gcd(int a, int b) {

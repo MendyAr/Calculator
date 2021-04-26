@@ -1,7 +1,6 @@
-//package PolyMath;
+package Polymath;
 
 public interface Scalar {
-
     public Scalar add(Scalar s);
     public Scalar mul(Scalar s);
     public Scalar addRational(Rational s);
