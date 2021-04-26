@@ -15,12 +15,12 @@ public class Polynomial {
         resetData();
     }
 
-    public Polynomial(Monomial[] monomials){
+    public Polynomial(Monomial[] monomials){ //we expect monomials[i] = Monomial with exponent i & not null
         if (monomials == null)
             throw new NullPointerException("Monomials can't be null array");
-        this.monomials = new Monomial[monomials.length];
+        this.monomials = new Monomial[monomials.length]; //preparing to copy the argument
         for (int i = 0; i < monomials.length; i++) {
-            if (monomials[i].getExponent() != i)
+            if (monomials[i] == null || monomials[i].getExponent() != i) //array not as expected
                 throw new IllegalArgumentException("For each monomial in the array monomials - monomial[i] has to be a monomial with exponent i");
             this.monomials[i] = new Monomial(monomials[i]);
         }
