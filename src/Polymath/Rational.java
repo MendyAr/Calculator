@@ -7,6 +7,17 @@ public class Rational implements Scalar {
     private int numerator;
     private int denominator;
 
+    //getters
+
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
+
+
     //constructors
 
     public Rational(int numerator, int denominator) {
