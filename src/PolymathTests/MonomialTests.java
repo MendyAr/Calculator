@@ -1,6 +1,8 @@
 package PolymathTests;
 
-import Polymath.*;
+import Polymath.Monomial;
+import Polymath.Rational;
+import Polymath.Integer;
 
 import org.junit.*;
 
