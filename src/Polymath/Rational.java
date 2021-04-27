@@ -102,7 +102,7 @@ public class Rational implements Scalar {
         }
         int numeratorExp = 1;
         int denominatorExp = 1;
-        while (exponent != 0){
+        while (exponent != 0) {
             numeratorExp *= numerator;
             denominatorExp *= denominator;
             exponent--;
