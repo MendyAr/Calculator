@@ -1,34 +1,34 @@
 package Polymath;
 
-public class Integer implements Scalar{
+public class Integer implements Scalar {
 
     // fields
     private int number;
 
     //getters
 
-    public int getNumber(){
+    public int getNumber() {
         return number;
     }
 
     // constructor
 
-    public Integer(int number){
+    public Integer(int number) {
         this.number = number;
     }
 
     // copy constructor
-    public Integer(Integer I){
+    public Integer(Integer I) {
         this.number = I.number;
     }
 
     //  methods
 
-    public Scalar add(Scalar s){
+    public Scalar add(Scalar s) {
         return s.addInteger(this);
     }
 
-    public Scalar mul(Scalar s){
+    public Scalar mul(Scalar s) {
         return s.mulInteger(this);
     }
 
@@ -36,53 +36,53 @@ public class Integer implements Scalar{
         return new Integer(number + s.number);
     }
 
-    public Scalar addRational(Rational s){
-        return new Rational( ((s.getDenominator() * number) + s.getNumerator()), s.getDenominator() );
+    public Scalar addRational(Rational s) {
+        return new Rational(((s.getDenominator() * number) + s.getNumerator()), s.getDenominator());
     }
 
-    public Scalar mulInteger(Integer s){
+    public Scalar mulInteger(Integer s) {
         return new Integer(number * s.number);
     }
 
-    public Scalar mulRational(Rational s){
-        return new Rational( s.getNumerator() * number, s.getDenominator());
+    public Scalar mulRational(Rational s) {
+        return new Rational(s.getNumerator() * number, s.getDenominator());
     }
 
     public Scalar power(int exponent) {
-        if ( exponent == 0)
+        if (exponent == 0)
             return new Integer(1);
-        if ( number == 0 )
+        if (number == 0)
             return new Integer(0);
 
         boolean flip = false;
-        if( exponent < 0 ) {
+        if (exponent < 0) {
             flip = true;
             exponent *= -1;
         }
         int newNum = 1;
-        while( exponent != 0 ) {
+        while (exponent != 0) {
             newNum *= number;
-            exponent --;
+            exponent--;
         }
-        if ( flip )// in case the exponent was negative we have
+        if (flip)// in case the exponent was negative we have
             return new Rational(1, newNum);
-        return new Integer( newNum );
+        return new Integer(newNum);
     }
 
-    public int sign(){
-        if( number > 0 )
+    public int sign() {
+        if (number > 0)
             return 1;
-        else if( number < 0 )
+        else if (number < 0)
             return -1;
         else
             return 0;
     }
 
     public Scalar neg() {
-        return new Integer(-1*number);
+        return new Integer(-1 * number);
     }
 
-    public String toString(){
+    public String toString() {
         return String.valueOf(number);
     }
 }
