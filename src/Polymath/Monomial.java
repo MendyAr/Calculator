@@ -6,7 +6,7 @@ public class Monomial {
     private int exponent;
     private Scalar coefficient;
 
-    // constructors
+    // constructor
     public Monomial( Scalar coefficient, int exponent ){
         if( exponent < 0 )
             throw new IllegalArgumentException("Exponent can't be negative");
