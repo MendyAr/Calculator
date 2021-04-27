@@ -42,7 +42,7 @@ public class Polynomial {
             if ((this.monomials.size() > i) && (p.monomials.size() > i)) //if both polynomials have monomial with exponent i
                 monomials.add(this.monomials.get(i).add(p.monomials.get(i))); //we insert the addition
                 //if not, one polynomial will and we'll insert the monomial as is
-            else if (monomials.size() > i)
+            else if (this.monomials.size() > i)
                 monomials.add(this.monomials.get(i));
             else
                 monomials.add(p.monomials.get(i));
