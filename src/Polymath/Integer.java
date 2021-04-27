@@ -80,4 +80,8 @@ public class Integer implements Scalar{
     public String toString(){
         return String.valueOf(number);
     }
+
+    public Scalar clone(){
+        return new Integer( number );
+    }
 }
