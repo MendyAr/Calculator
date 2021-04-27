@@ -90,6 +90,11 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
+        if (exponent == 0) //for every number x, x^0 = 1
+            return new Integer(1);
+        if (numerator == 0) //for every exponent a!=0, 0^a = 0
+            return new Integer(0);
+
         boolean flip = false; //will tell us if we will need to flip the numerator and denominator
         if (exponent < 0) {
             flip = true;

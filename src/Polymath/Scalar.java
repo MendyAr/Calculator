@@ -10,5 +10,4 @@ public interface Scalar {
     Scalar power(int exponent);
     int sign();
     Scalar neg();
-    Scalar clone();
 }

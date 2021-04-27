@@ -6,13 +6,24 @@ public class Monomial {
     private int exponent;
     private Scalar coefficient;
 
+    //getter
+
+    public int getExponent(){
+        return exponent;
+    }
+
+    public Scalar getCoefficient(){
+        return coefficient;
+    }
+
     // constructor
+
     public Monomial( Scalar coefficient, int exponent ){
         if( exponent < 0 )
             throw new IllegalArgumentException("Exponent can't be negative");
         this.exponent =  exponent;
         // create a new clone of the scalar and use it instead to prevent pointer complications
-        this.coefficient = coefficient.clone();
+        this.coefficient = coefficient;
     }
 
     public Monomial( String coefficient, int exponent ){
@@ -48,13 +59,10 @@ public class Monomial {
     // copy constructor
     public Monomial( Monomial m ){
         this.exponent =  m.exponent;
-        this.coefficient = m.coefficient.clone();
+        this.coefficient = m.coefficient;
     }
 
     // methods
-    public int getExponent(){
-        return exponent;
-    }
 
     public Monomial add(Monomial m){
         // we can't sum two monomial with different exponents into one monomial
@@ -78,8 +86,7 @@ public class Monomial {
         if( exponent == 0 )
             return new Monomial(new Integer(0), 0);
 
-        Scalar newCoefficient = coefficient.mulInteger(new Integer((exponent)));
-        return new Monomial(newCoefficient, exponent - 1);
+        return new Monomial(coefficient.mulInteger(new Integer((exponent))), exponent - 1);
     }
 
     public int sign(){
