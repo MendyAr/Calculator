@@ -1,13 +1,14 @@
 package Polymath;
 
 public interface Scalar {
-    public Scalar add(Scalar s);
-    public Scalar mul(Scalar s);
-    public Scalar addRational(Rational s);
-    public Scalar addInteger(Integer s);
-    public Scalar mulRational(Rational s);
-    public Scalar mulInteger(Integer s);
-    public Scalar power(int exponent);
-    public int sign();
-    public Scalar neg();
+    Scalar add(Scalar s);
+    Scalar mul(Scalar s);
+    Scalar addRational(Rational s);
+    Scalar addInteger(Integer s);
+    Scalar mulRational(Rational s);
+    Scalar mulInteger(Integer s);
+    Scalar power(int exponent);
+    int sign();
+    Scalar neg();
+    Scalar clone();
 }
