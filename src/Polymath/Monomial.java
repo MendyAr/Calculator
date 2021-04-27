@@ -41,13 +41,6 @@ public class Monomial {
         }
     }
 
-    public Monomial( int coefficient, int exponent ){
-        if( exponent < 0 )
-            throw new IllegalArgumentException("Exponent can't be negative");
-        this.exponent =  exponent;
-        this.coefficient = new Integer(coefficient);
-    }
-
     // copy constructor
     public Monomial( Monomial m ){
         this.exponent =  m.exponent;
