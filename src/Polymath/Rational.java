@@ -22,7 +22,7 @@ public class Rational implements Scalar {
 
     public Rational(int numerator, int denominator) {
         if (denominator == 0)
-            throw new IllegalArgumentException("Denominator can't be 0");
+            throw new ArithmeticException("Denominator can't be 0");
         //making sure the Rational number is already at its simplest form:
 
         if (denominator < 0) { //we want to use the absolute value of the given denominator as our denominator
