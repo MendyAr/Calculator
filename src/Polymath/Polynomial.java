@@ -11,6 +11,8 @@ public class Polynomial {
     public Polynomial(ArrayList<Monomial> monomials) {
         checkMonomials(monomials);
         this.monomials = new ArrayList<Monomial>(monomials); //copying the given list to ensure immutability of Polynomial
+        if (this.monomials.size() == 0)
+            this.monomials.add(new Monomial("0", 0));
     }
 
     //copy constructor
@@ -19,20 +21,6 @@ public class Polynomial {
     }
 
     //methods
-
-    //checks legality of monomials
-    public void checkMonomials(ArrayList<Monomial> monomials) { //we expect monomials.get(i) = Monomial with exponent i
-        if (monomials == null)
-            throw new NullPointerException("Monomials can't be null");
-        int i = 0;
-        for (Monomial monom : monomials) {
-            if (monom == null)
-                throw new NullPointerException("Monomial at index - " + i + " is null");
-            if (monom.getExponent() != i)
-                throw new IllegalArgumentException("Monomial's exponent at index - " + i + " is not - " + i);
-            i++;
-        }
-    }
 
     //adds p to the polynomial
     public Polynomial add(Polynomial p) {
@@ -97,6 +85,20 @@ public class Polynomial {
     }
 
     //static functions
+
+    //checks legality of monomials
+    public static void checkMonomials(ArrayList<Monomial> monomials) { //we expect monomials.get(i) = Monomial with exponent i
+        if (monomials == null)
+            throw new NullPointerException("Monomials can't be null");
+        int i = 0;
+        for (Monomial monom : monomials) {
+            if (monom == null)
+                throw new NullPointerException("Monomial at index - " + i + " is null");
+            if (monom.getExponent() != i)
+                throw new IllegalArgumentException("Monomial's exponent at index - " + i + " is not - " + i);
+            i++;
+        }
+    }
 
     public static Polynomial build(String input) {
         input = input.trim().replaceAll(" +", " "); //cleaning input of all unwanted spaces
