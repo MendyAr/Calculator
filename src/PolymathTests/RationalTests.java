@@ -173,8 +173,8 @@ public class RationalTests {
 
     @Test(expected = ArithmeticException.class)
     public void ZeroExponentMinusOne() {
-        r = new Rational(0, 2);
-        r = r.power(-1);
+        r = new Rational(0, 5);
+        r.power(-1);
     }
 
 }
