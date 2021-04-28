@@ -74,6 +74,10 @@ public class PolynomialTests {
         p = Polynomial.build("0 0 0 8 0");
         p = p.add(Polynomial.build("0 0 0 -8 0"));
         Assert.assertEquals(p.toString(), "0");
+        p = Polynomial.build("");
+        p = p.add(Polynomial.build("1"));
+        Assert.assertEquals(p.toString(), "1");
+
     }
 
     @Test
@@ -86,6 +90,9 @@ public class PolynomialTests {
         Assert.assertEquals(p.toString(), "1/3+2x^2+5x^3-1/4x^4");
         p = Polynomial.build("5 0 0 2");
         p = p.mul(Polynomial.build("0"));
+        Assert.assertEquals(p.toString(), "0");
+        p = Polynomial.build("");
+        p = p.mul(Polynomial.build("1"));
         Assert.assertEquals(p.toString(), "0");
     }
 
@@ -103,6 +110,9 @@ public class PolynomialTests {
         p = Polynomial.build("1/5 1 -2 0 2/3");
         s = p.evaluate(new Integer(1));
         Assert.assertEquals(s.toString(), "-2/15");
+        p = Polynomial.build("");
+        s = p.evaluate(new Integer(1));
+        Assert.assertEquals(s.toString(), "0");
     }
 
     @Test
@@ -114,6 +124,9 @@ public class PolynomialTests {
         p = p.derivative();
         Assert.assertEquals(p.toString(), "0");
         p = Polynomial.build("0");
+        p = p.derivative();
+        Assert.assertEquals(p.toString(), "0");
+        p = Polynomial.build("");
         p = p.derivative();
         Assert.assertEquals(p.toString(), "0");
     }
