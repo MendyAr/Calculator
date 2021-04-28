@@ -15,17 +15,27 @@ public class Polynomial {
 
     //copy constructor
     public Polynomial(Polynomial p) {
-        if (p == null)
-            throw new NullPointerException("Can't copy null");
         monomials = new ArrayList<Monomial>(p.monomials);
     }
 
     //methods
 
+    //checks legality of monomials
+    public void checkMonomials(ArrayList<Monomial> monomials) { //we expect monomials.get(i) = Monomial with exponent i
+        if (monomials == null)
+            throw new NullPointerException("Monomials can't be null");
+        int i = 0;
+        for (Monomial monom : monomials) {
+            if (monom == null)
+                throw new NullPointerException("Monomial at index - " + i + " is null");
+            if (monom.getExponent() != i)
+                throw new IllegalArgumentException("Monomial's exponent at index - " + i + " is not - " + i);
+            i++;
+        }
+    }
+
     //adds p to the polynomial
     public Polynomial add(Polynomial p) {
-        if (p == null)
-            throw new NullPointerException("Can't add with null");
         int size = Math.max(this.monomials.size(), p.monomials.size()); //size of the new Polynomial will be the size of the largest of the poynomials (and thus have the same degree)
         ArrayList<Monomial> monomials = new ArrayList<Monomial>(size);
         for (int i = 0; i < size; i++) { //iterating through the exponents
@@ -42,8 +52,6 @@ public class Polynomial {
 
     //multiplies p with the polynomial
     public Polynomial mul(Polynomial p) {
-        if (p == null)
-            throw new NullPointerException("Can't multiply by null");
         //From https://en.wikipedia.org/wiki/Degree_of_a_polynomial
         //for Polynomials p, q - deg(p*q) = deg(p) + deg(q)
         ArrayList<Monomial> monomials = new ArrayList<Monomial>((this.monomials.size() - 1) + (p.monomials.size() - 1) + 1);
@@ -61,8 +69,6 @@ public class Polynomial {
 
     //evaluates the polynomial with s
     public Scalar evaluate(Scalar s) {
-        if (s == null)
-            throw new NullPointerException("Can't evaluate with null");
         Scalar result = new Integer(0);
         for (Monomial monom : monomials) //iterating through every monomial in the polynomial
             result = result.add(monom.evaluate(s)); //adding the evaluation of current monomial with s
@@ -92,23 +98,7 @@ public class Polynomial {
 
     //static functions
 
-    //checks legality of monomials
-    public static void checkMonomials(ArrayList<Monomial> monomials) { //we expect monomials.get(i) = Monomial with exponent i
-        if (monomials == null)
-            throw new NullPointerException("Monomials can't be null");
-        int i = 0;
-        for (Monomial monom : monomials) {
-            if (monom == null)
-                throw new NullPointerException("Monomial at index - " + i + " is null");
-            if (monom.getExponent() != i)
-                throw new IllegalArgumentException("Monomial's exponent at index - " + i + " is not - " + i);
-            i++;
-        }
-    }
-
     public static Polynomial build(String input) {
-        if (input == null)
-            throw new NullPointerException("Can't build from null");
         input = input.trim().replaceAll(" +", " "); //cleaning input of all unwanted spaces
         ArrayList<Monomial> monomials = new ArrayList<Monomial>();
         int exponent = 0;
