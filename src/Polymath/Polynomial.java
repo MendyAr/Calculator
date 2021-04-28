@@ -11,8 +11,6 @@ public class Polynomial {
     public Polynomial(ArrayList<Monomial> monomials) {
         checkMonomials(monomials);
         this.monomials = new ArrayList<Monomial>(monomials); //copying the given list to ensure immutability of Polynomial
-        if (this.monomials.size() == 0)
-            this.monomials.add(new Monomial("0", 0));
     }
 
     //copy constructor
