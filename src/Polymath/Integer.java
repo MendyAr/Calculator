@@ -19,32 +19,46 @@ public class Integer implements Scalar {
 
     // copy constructor
     public Integer(Integer I) {
+        if (I == null)
+            throw new NullPointerException("Can't copy null");
         this.number = I.number;
     }
 
     //  methods
 
     public Scalar add(Scalar s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         return s.addInteger(this);
     }
 
     public Scalar mul(Scalar s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         return s.mulInteger(this);
     }
 
     public Scalar addInteger(Integer s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         return new Integer(number + s.number);
     }
 
     public Scalar addRational(Rational s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         return new Rational(((s.getDenominator() * number) + s.getNumerator()), s.getDenominator());
     }
 
     public Scalar mulInteger(Integer s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         return new Integer(number * s.number);
     }
 
     public Scalar mulRational(Rational s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         return new Rational(s.getNumerator() * number, s.getDenominator());
     }
 
