@@ -36,6 +36,8 @@ public class Rational implements Scalar {
 
     //copy constructor
     public Rational(Rational rational) {
+        if (rational == null)
+            throw new NullPointerException("Can't copy null");
         this.numerator = rational.numerator;
         this.denominator = rational.denominator;
     }
@@ -57,34 +59,46 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         //since we don't know the type of s but we know the type of this we will call s.addRational
         return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         //since we don't know the type of s but we know the type of this we will call s.mulRational
         return s.mulRational(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         int lcm = lcm(denominator, s.denominator);
         return new Rational((numerator * (lcm / denominator)) + (s.numerator * (lcm / s.denominator)), lcm);
     }
 
     @Override
     public Scalar addInteger(Integer s) {
+        if (s == null)
+            throw new NullPointerException("Can't add with null");
         return new Rational((s.getNumber() * denominator) + numerator, denominator);
     }
 
     @Override
     public Scalar mulRational(Rational s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         return new Rational(numerator * s.numerator, denominator * s.denominator);
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
+        if (s == null)
+            throw new NullPointerException("Can't multiply by null");
         return new Rational(s.getNumber() * numerator, denominator);
     }
 
