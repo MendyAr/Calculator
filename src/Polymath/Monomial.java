@@ -15,6 +15,9 @@ public class Monomial {
     public Monomial(Scalar coefficient, int exponent) {
         if (exponent < 0)
             throw new IllegalArgumentException("Exponent can't be negative");
+        if (coefficient == null)
+            throw new NullPointerException("Can't create a monomial with null scalar");
+
         this.exponent = exponent;
         this.coefficient = coefficient;
     }
@@ -22,6 +25,9 @@ public class Monomial {
     public Monomial(String coefficient, int exponent) {
         if (exponent < 0)
             throw new IllegalArgumentException("Exponent can't be negative");
+        if (coefficient == null)
+            throw new NullPointerException("Can't create a monomial with null scalar");
+
         this.exponent = exponent;
         // check if the string represents a rational number
         if (coefficient.indexOf('/') != -1) {
@@ -42,6 +48,9 @@ public class Monomial {
 
     // copy constructor
     public Monomial(Monomial m) {
+        if (m == null)
+            throw new NullPointerException("Can't copy null");
+
         this.exponent = m.exponent;
         this.coefficient = m.coefficient;
     }
@@ -49,6 +58,9 @@ public class Monomial {
     // methods
 
     public Monomial add(Monomial m) {
+        if (m == null)
+            throw new NullPointerException("Can't add null monomial");
+
         // we can't sum two monomial with different exponents into one monomial
         if (exponent != m.exponent)
             return null;
@@ -56,10 +68,14 @@ public class Monomial {
     }
 
     public Monomial mult(Monomial m) {
+        if (m == null)
+            throw new NullPointerException("Can't multiply null monomial");
         return new Monomial(coefficient.mul(m.coefficient), exponent + m.exponent);
     }
 
     public Scalar evaluate(Scalar s) {
+        if (s == null)
+            throw new NullPointerException("Can't evaluate with null scalar");
         return coefficient.mul(s.power(exponent));
     }
 

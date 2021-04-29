@@ -10,12 +10,12 @@ public class RationalTests {
     private Scalar r;
 
     @Test(expected = ArithmeticException.class)
-    public void denominatorZero(){
+    public void create_with_denominator_zero_fail(){
         r = new Rational((int)(Math.random()*java.lang.Integer.MAX_VALUE), 0);
     }
 
     @Test
-    public void creation(){
+    public void creation_success(){
         r = new Rational(5,10);
         Assert.assertEquals(r.toString(), "1/2");
         r = new Rational(-352, 20460);
@@ -31,7 +31,7 @@ public class RationalTests {
     }
 
     @Test
-    public void sign(){
+    public void sign_success(){
         r = new Rational(5,10);
         Assert.assertEquals(r.sign(), 1);
         r = new Rational(-352, 20460);
@@ -48,7 +48,7 @@ public class RationalTests {
     }
 
     @Test
-    public void neg(){
+    public void neg_success(){
         r = new Rational(5,10);
         r = r.neg();
         Assert.assertEquals(r.toString(), "-1/2");
@@ -70,28 +70,33 @@ public class RationalTests {
     }
 
     @Test
-    public void add() {
+    public void add_Integer_success() {
         r = new Rational(-3, 2);
         r = r.add(new Integer(14));
         Assert.assertEquals(r.toString(), "25/2");
-        r = new Rational(0, 5);
-        r = r.add(new Integer(4));
-        Assert.assertEquals(r.toString(), "4");
-        r = new Rational(0, -1);
-        r = r.add(new Integer(0));
-        Assert.assertEquals(r.toString(), "0");
         r = new Rational(-5, -5);
         r = r.add(new Integer(-8));
         Assert.assertEquals(r.toString(), "-7");
         r = new Rational(-5, 7);
         r = r.add(new Integer(-2));
         Assert.assertEquals(r.toString(), "-19/7");
+    }
+
+    @Test
+    public void add_Integer_zero_success() {
+        r = new Rational(0, 5);
+        r = r.add(new Integer(4));
+        Assert.assertEquals(r.toString(), "4");
+        r = new Rational(0, -1);
+        r = r.add(new Integer(0));
+        Assert.assertEquals(r.toString(), "0");
+    }
+
+    @Test
+    public void add_Rational_success() {
         r = new Rational(3, 5);
         r = r.add(new Rational(4, 7));
         Assert.assertEquals(r.toString(), "41/35");
-        r = new Rational(0, 5);
-        r = r.add(new Rational(0, -7));
-        Assert.assertEquals(r.toString(), "0");
         r = new Rational(9, 5);
         r = r.add(new Rational(9, -5));
         Assert.assertEquals(r.toString(), "0");
@@ -101,7 +106,31 @@ public class RationalTests {
     }
 
     @Test
-    public void mul() {
+    public void add_Rational_zero_success() {
+        r = new Rational(0, 5);
+        r = r.add(new Rational(0, -7));
+        Assert.assertEquals(r.toString(), "0");
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void add_null_fail() {
+        r = new Rational(2, 5);
+        r = r.add(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void addInteger_null_fail() {
+        r = new Rational(2, 5);
+        r = r.addInteger(null);
+    }
+    @Test(expected = NullPointerException.class)
+    public void addRational_null_fail() {
+        r = new Rational(2, 5);
+        r = r.addRational(null);
+    }
+
+    @Test
+    public void mul_Integer_success() {
         r = new Rational(-3, 2);
         r = r.mul(new Integer(14));
         Assert.assertEquals(r.toString(), "-21");
@@ -120,6 +149,10 @@ public class RationalTests {
         r = new Rational(-5, 7);
         r = r.mul(new Integer(1));
         Assert.assertEquals(r.toString(), "-5/7");
+    }
+
+    @Test
+    public void mul_Rational_success(){
         r = new Rational(0, 5);
         r = r.mul(new Rational(0, -7));
         Assert.assertEquals(r.toString(), "0");
@@ -135,6 +168,24 @@ public class RationalTests {
         r = new Rational(-5, -5);
         r = r.mul(new Rational(-6, 6));
         Assert.assertEquals(r.toString(), "-1");
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void mul_null_fail(){
+        r = new Rational(2, 5);
+        r = r.mul(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void mulInteger_null_fail(){
+        r = new Rational(2, 5);
+        r = r.mulInteger(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void mulRational_null_fail(){
+        r = new Rational(2, 5);
+        r = r.mulRational(null);
     }
 
     @Test
@@ -172,7 +223,7 @@ public class RationalTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void ZeroExponentMinusOne() {
+    public void negative_power_on_zero_fail() {
         r = new Rational(0, 5);
         r.power(-1);
     }
