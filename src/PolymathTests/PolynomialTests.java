@@ -53,13 +53,13 @@ public class PolynomialTests {
         Assert.assertEquals(p.toString(), "1/2+3x-x^2-3/8x^4+8x^6");
         p = Polynomial.build("1    2   3  4 5 67");
         Assert.assertEquals(p.toString(), "1+2x+3x^2+4x^3+5x^4+67x^5");
-        p = Polynomial.build("5/7+3+0+-5/5+6");
+        p = Polynomial.build("5/7 3 0 -5/5 6");
         Assert.assertEquals(p.toString(), "5/7+3x-x^3+6x^4");
-        p = Polynomial.build("0+0+0");
+        p = Polynomial.build("0 0 0");
         Assert.assertEquals(p.toString(), "0");
         // copy constructor
         p2 = new Polynomial(p);
-        Assert.assertEquals(p.toString(), "3+4x+5x^3");
+        Assert.assertEquals(p2.toString(), p.toString());
     }
 
 

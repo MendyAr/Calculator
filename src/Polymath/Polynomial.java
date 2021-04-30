@@ -101,6 +101,8 @@ public class Polynomial {
     public static Polynomial build(String input) {
         input = input.trim().replaceAll(" +", " "); //cleaning input of all unwanted spaces
         ArrayList<Monomial> monomials = new ArrayList<Monomial>();
+        if (input.length() == 0)
+            return new Polynomial(monomials);
         int exponent = 0;
         for (String coef : input.split(" ")) {
             monomials.add(new Monomial(coef, exponent));
