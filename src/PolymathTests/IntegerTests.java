@@ -31,7 +31,6 @@ public class IntegerTests {
     private Scalar i;
 
     @Test
-
     public void init_positiveInput_Success() {
         int integer = ((int) (Math.random() * (java.lang.Integer.MAX_VALUE))) + 1;
         i = new Integer(integer);
