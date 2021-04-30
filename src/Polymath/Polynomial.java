@@ -36,7 +36,7 @@ public class Polynomial {
 
     //adds p to the polynomial
     public Polynomial add(Polynomial p) {
-        int size = Math.max(this.monomials.size(), p.monomials.size()); //size of the new Polynomial will be the size of the largest of the poynomials (and thus have the same degree)
+        int size = Math.max(this.monomials.size(), p.monomials.size()); //size of the new Polynomial will be the size of the largest of the polynomials (and thus have the same degree)
         ArrayList<Monomial> monomials = new ArrayList<Monomial>(size);
         for (int i = 0; i < size; i++) { //iterating through the exponents
             if ((this.monomials.size() > i) && (p.monomials.size() > i)) //if both polynomials have monomial with exponent i
