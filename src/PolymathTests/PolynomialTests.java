@@ -283,22 +283,22 @@ public class PolynomialTests {
     public void evaluate(){
         p = Polynomial.build("1/2 0 -2 3/5 0 6");
         s = p.evaluate(new Rational(4,5));
-        Assert.assertEquals("Failed to evaluate properly", "9333/6250", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "9333/6250", s.toString());
         p = Polynomial.build("0 1 1 2 5/7");
         s = p.evaluate(new Integer(0));
-        Assert.assertEquals("Failed to evaluate properly", "0", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "0", s.toString());
         p = Polynomial.build("4 1 1 1 5/7");
         s = p.evaluate(new Integer(0));
-        Assert.assertEquals("Failed to evaluate properly", "4", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "4", s.toString());
         p = Polynomial.build("3/7 0 0 2");
         s = p.evaluate(new Rational(0,5));
-        Assert.assertEquals("Failed to evaluate properly", "3/7", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "3/7", s.toString());
         p = Polynomial.build("1/5 1 -2 0 2/3");
         s = p.evaluate(new Integer(1));
-        Assert.assertEquals("Failed to evaluate properly", "-2/15", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "-2/15", s.toString());
         p = Polynomial.build("1 1 1 1 1 1");
         s = p.evaluate(new Rational(-1, 1));
-        Assert.assertEquals("Failed to evaluate properly", "0", p.toString());
+        Assert.assertEquals("Failed to evaluate properly", "0", s.toString());
     }
 
     @Test(expected = NullPointerException.class)
