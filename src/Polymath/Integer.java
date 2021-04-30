@@ -65,7 +65,10 @@ public class Integer implements Scalar {
     public Scalar power(int exponent) {
         if (exponent == 0)
             return new Integer(1);
-        if (number == 0)
+        // 0^a =   0     , when a >= 0
+        //     = invalid , when a <  0,
+        // in the last case exception will be thrown when the method try to create a new rational
+        if (number == 0 & (exponent < 0))
             return new Integer(0);
 
         boolean flip = false;
