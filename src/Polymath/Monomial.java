@@ -79,7 +79,7 @@ public class Monomial {
         return coefficient.mul(s.power(exponent));
     }
 
-    Monomial derivative() {
+    public Monomial derivative() {
         // in case where the exponent is 0 so the new monomial is 0,
         // monomial can't have -1 exponent thus return a new monomial with coefficient 0 and exponent 0.
         // this shouldn't change the behavior of the new Monomial since its coefficient is 0

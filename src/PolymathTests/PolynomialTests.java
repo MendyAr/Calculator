@@ -58,9 +58,9 @@ public class PolynomialTests {
         Assert.assertEquals("Failed to construct properly with string","1/2+3x-x^2-3/8x^4+8x^6", p.toString());
         p = Polynomial.build("1    2   3  4 5 67");
         Assert.assertEquals("Failed to construct properly with string","1+2x+3x^2+4x^3+5x^4+67x^5", p.toString());
-        p = Polynomial.build("5/7+3+0+-5/5+6");
+        p = Polynomial.build("5/7 3 0 -5/5 6");
         Assert.assertEquals("Failed to construct properly with string","5/7+3x-x^3+6x^4", p.toString());
-        p = Polynomial.build("0+0+0");
+        p = Polynomial.build("0 0 0");
         Assert.assertEquals("Failed to construct properly with string","0", p.toString());
         p = Polynomial.build("    0     ");
         Assert.assertEquals("Failed to construct properly with string","0", p.toString());

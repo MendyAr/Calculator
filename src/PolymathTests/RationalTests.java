@@ -51,7 +51,6 @@ public class RationalTests {
         Assert.assertEquals("incorrect sign was returned", 0, r.sign());
         r = new Rational(0, -1*((int)(Math.random()* (java.lang.Integer.MAX_VALUE -1)) + 1 ));
         Assert.assertEquals("incorrect sign was returned", 0, r.sign());
-
     }
 
     @Test
