@@ -32,7 +32,7 @@ public class RationalTests {
         r = new Rational((int)(Math.random()*java.lang.Integer.MAX_VALUE), 0);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void create_copy_of_null_fail(){
         r = new Rational(null);
     }
